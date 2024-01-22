@@ -14,14 +14,13 @@ jobs:
       # 获取源码
       - name: 迁出代码
         # 使用action库  actions/checkout获取源码
-        uses: actions/checkout@dev
+        uses: actions/checkout@master
 
-      # 安装Node10
-      - name: 安装node.js
-        # 使用action库  actions/setup-node安装node
-        uses: actions/setup-node@v1
+      # 安装 Node.js
+      - name: Install Node.js
+        uses: actions/setup-node@v4.0.0
         with:
-          node-version: 18.16.1
+          node-version: "18.x"
 
       # 安装依赖
       - name: 安装依赖
