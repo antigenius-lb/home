@@ -45,5 +45,3 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           # 目标地址
           TARGET: '/www/wwwroot'
-
-
