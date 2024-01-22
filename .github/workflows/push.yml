@@ -18,7 +18,7 @@ jobs:
 
       # 安装 Node.js
       - name: Install Node.js
-        uses: actions/setup-node@v4.0.0
+        uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -32,17 +32,16 @@ jobs:
 
       # 上传阿里云
       - name: 发布到阿里云
-        uses: easingthemes/ssh-deploy@master
+        uses: easingthemes/ssh-deploy@main
         env:
           # 私钥
-          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           # scp参数
-          ARGS: '-avzr --delete'
+          ARGS: "-rlgoDzvc -i --delete"
           # 源目录
-          SOURCE: 'dist'
+          SOURCE: "dist/"
           # 服务器ip：换成你的服务器IP
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          # 用户
-          REMOTE_USER: 'root'
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
           # 目标地址
           TARGET: '/www/wwwroot'
